@@ -12,7 +12,6 @@ interface ImageUploadProps {
   size?: number,
   measure?: Measure,
   length?: number,
-
 }
 
 function getBase64(img, callback) {

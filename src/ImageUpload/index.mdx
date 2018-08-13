@@ -9,19 +9,26 @@ import { ImageUpload } from 'hawkeye-arrow'
 
 # ImageUpload
 
-
-
-## Basic usage
+## 基本用法
 
 <Playground>
   <ImageUpload action="/api/image/upload"></ImageUpload>
 </Playground>
 
-## Validate Format
+## 校验项
+
+可选校验图片格式、图片大小、图片尺寸、限制上传图片数量
 
 <Playground>
   <ImageUpload 
     action="/api/image/upload"
     format="jpg"
+    size={2}
+    measure={{width: 640, height: 480}}
+    length={5}
   ></ImageUpload>
 </Playground>
+
+## API
+
+<PropsTable of={ImageUpload} />
