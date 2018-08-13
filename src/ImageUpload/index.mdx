@@ -1,0 +1,27 @@
+---
+name: ImageUpload
+menu: Components
+order: 1
+---
+
+import { Playground, PropsTable } from 'docz'
+import { ImageUpload } from 'hawkeye-arrow'
+
+# ImageUpload
+
+
+
+## Basic usage
+
+<Playground>
+  <ImageUpload action="/api/image/upload"></ImageUpload>
+</Playground>
+
+## Validate Format
+
+<Playground>
+  <ImageUpload 
+    action="/api/image/upload"
+    format="jpg"
+  ></ImageUpload>
+</Playground>

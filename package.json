@@ -1,0 +1,28 @@
+{
+  "name": "hawkeye-arrow",
+  "description": "I'm hawkeye's Arrow.",
+  "version": "0.0.1",
+  "main": "lib/index",
+  "license": "MIT",
+  "scripts": {
+    "dev": "docz dev",
+    "build": "docz build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nnecec/arrow.git"
+  },
+  "dependencies": {
+    "antd": "^3.8.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "docz": "^0.9.6",
+    "docz-core": "^0.9.6",
+    "docz-plugin-css": "^0.9.6",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "typescript": "^3.0.1"
+  }
+}
