@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Button, Upload, Modal, Icon, message } from 'antd'
+import { Upload, Modal, Icon, message } from 'antd'
 
 interface Measure {
   width: number,
@@ -7,10 +7,15 @@ interface Measure {
 }
 
 interface ImageUploadProps {
+  /** 上传图片的 api */
   action: string,
-  format?: string,
+  /** 校验图片格式 支持 png|jpg */
+  format?: 'png' | 'jpg',
+  /** 校验图片大小 单位为 M */
   size?: number,
+  /** 校验图片尺寸  */
   measure?: Measure,
+  /** 接受上传图片数量  */
   length?: number,
 }
 
@@ -24,28 +29,29 @@ export default class ImageUpload extends React.Component<ImageUploadProps, any> 
   static defaultProps = {
     length: Infinity
   }
+  state: {
+    previewVisible: boolean; // 预览图片 Modal 的 Visible 属性
+    previewImage: string; // 预览图片的 url
+    fileList: Array<any>;
+  };
+  props: ImageUploadProps;
 
   constructor(props) {
     super(props)
     this.state = {
       previewVisible: false,
       previewImage: '',
-      fileList: [{
-        uid: '-1',
-        name: 'xxx.png',
-        status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      }],
+      fileList: [],
     }
   }
 
-  handleChange = ({ fileList }) => {
-    console.log(fileList)
+  // 上传图片后的 change 调用
+  private handleChange = ({ fileList }) => {
     this.setState({ fileList })
   }
 
   // 预览图片
-  handlePreview = (file) => {
+  private handlePreview = (file) => {
     this.setState({
       previewImage: file.url || file.thumbUrl,
       previewVisible: true,
@@ -53,26 +59,30 @@ export default class ImageUpload extends React.Component<ImageUploadProps, any> 
   }
 
   // 校验图片格式 / 大小 / 尺寸
-  handleBeforeUpload = (file) => new Promise((resolve, reject) => {
+  private handleBeforeUpload = (file) => new Promise((resolve, reject) => {
     getBase64(file, (url) => {
       const { measure, format, size } = this.props
 
-      const _format = {
-        jpg: 'image/jpeg',
-        png: 'image/png'
-      }
-      console.log(file.type)
       // 图片格式
-      if (format && _format[format] !== file.type) {
-        message.error(`请上传图片格式为${format}的图片`)
-        reject()
+      if (format) {
+        const _format = {
+          jpg: 'image/jpeg',
+          png: 'image/png'
+        }
+        if (_format[format] !== file.type) {
+          message.error(`请上传图片格式为${format}的图片`)
+          reject()
+        }
+
       }
 
       // 图片大小
-      const sizeLimit = file.size / 1024 / 1024 < size
-      if (size && !sizeLimit) {
-        message.error(`请上传图片大小为${size}M的图片`)
-        reject()
+      if (size) {
+        const sizeLimit = file.size / 1024 / 1024 < size
+        if (!sizeLimit) {
+          message.error(`请上传图片大小为${size}M的图片`)
+          reject()
+        }
       }
 
       // 图片尺寸
@@ -104,8 +114,8 @@ export default class ImageUpload extends React.Component<ImageUploadProps, any> 
   })
 
 
-
-  handleCancelPreview = () => this.setState({ previewVisible: false })
+  // 关闭图片预览
+  private handleCancelPreview = () => this.setState({ previewVisible: false })
 
   render() {
     const { fileList, previewVisible, previewImage } = this.state

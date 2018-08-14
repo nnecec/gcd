@@ -1,11 +1,11 @@
-// rollup.config.jsnpm
 import typescript from 'typescript'
 import rollupTypescript from 'rollup-plugin-typescript2'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
 import { uglify } from 'rollup-plugin-uglify'
-import json from 'rollup-plugin-json'
+import less from 'rollup-plugin-less'
+import postcss from 'rollup-plugin-postcss'
 import buble from 'rollup-plugin-buble'
 
 const plugins = [
@@ -40,13 +40,16 @@ const plugins = [
       ],
     },
   }),
+  less(),
+  postcss({ extract: true }),
+  buble(),
   // uglify(),
 ]
 
 const dependencies = Object.keys(require('../package.json').dependencies)
 
 export default {
-  input: 'components/index.ts',
+  input: 'src/index.ts',
   output: {
     file: 'dist/index.js',
     format: 'umd',

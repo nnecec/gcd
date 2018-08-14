@@ -22,7 +22,7 @@ module.exports = {
     extensions: ['.js', '.ts', '.tsx'],
     mainFields: ['module', 'browser', 'main'],
     alias: {
-      components: path.resolve(__dirname, '../components')
+      // components: path.resolve(__dirname, '../src')
     }
   },
   module: {
@@ -39,13 +39,6 @@ module.exports = {
           'style-loader',
           'css-loader',
           'less-loader'
-        ]
-      },
-      {
-        test: /\.mdx?$/,
-        use: [
-          'babel-loader',
-          '@mdx-js/loader',
         ]
       },
       // static
