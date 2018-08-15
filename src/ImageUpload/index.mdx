@@ -1,10 +1,11 @@
 ---
 name: ImageUpload 图片上传
+route: /components/imageUpload
 menu: DataEntry
 ---
 
 import { Playground, PropsTable } from 'docz'
-import { Form } from 'antd'
+import { Form, Button } from 'antd'
 import { ImageUpload } from 'hawkeye-arrow'
 
 # ImageUpload
@@ -29,30 +30,32 @@ import { ImageUpload } from 'hawkeye-arrow'
   ></ImageUpload>
 </Playground>
 
-## 支持Form
+## 支持 Form
 <Playground>
   {() => {
     class IU extends React.Component {
       render() {
         const { getFieldDecorator } = this.props.form
         return (
-          <Form.Item
-      >
-        {
-          getFieldDecorator('imageList', {
-          })(
-            <ImageUpload></ImageUpload>
-          )}
-      </Form.Item>
+          <Form>
+            <Form.Item
+              label="图片列表"
+            >
+              {
+                getFieldDecorator('imageList', {
+                  initialValue: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png']
+                })(
+                  <ImageUpload action="/api/image/upload" />
+                )}
+            </Form.Item>
+
+          </Form>
         )
       }
     }
-
-    const ImageUploadDemo = Form.create()(IU)
-
-
+    const IUForm = Form.create()(IU)
     return (
-      <ImageUploadDemo />
+      <IUForm />
     )
   }}
 </Playground>

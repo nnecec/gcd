@@ -45,6 +45,18 @@ export default class ImageUpload extends React.Component<ImageUploadProps, any> 
     }
   }
 
+  componentDidMount() {
+    console.log(this.props)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+  }
+
+  private setFileList = () => {
+    
+  }
+
   // 上传图片后的 change 调用
   private handleChange = ({ fileList }) => {
     this.setState({ fileList })

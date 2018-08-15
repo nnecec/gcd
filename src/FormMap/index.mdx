@@ -4,19 +4,22 @@ menu: DataEntry
 ---
 
 import { Playground, PropsTable } from 'docz'
-import { Form } from 'antd'
+import { Form, Button } from 'antd'
 import { FormMap } from 'hawkeye-arrow'
+import { FormItem } from './index.tsx'
 
 # FormMap
 
 ## 基本用法
+
+必须由外部建立 Form, 并传入 FormMap 的 `form` 属性。
 
 <Playground>
   {() => {
     class FM extends React.Component {
       render() {
         const items = [{
-          name: 'inputDemo',
+          key: 'inputDemo',
           FormItemConfigs:{
             label: '名称',
             labelCol: { span: 6 },
@@ -24,20 +27,28 @@ import { FormMap } from 'hawkeye-arrow'
           },
           initialValue: 'nnecec',
         }, {
-          name:'selectDemo',
+          key:'selectDemo',
           type: 'select',
           FormItemConfigs:{
             label: '性别',
           }
         }]
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          this.props.form.validateFields((err, values) => {
+              console.log('Received values of form: ', values);
+          });
+        }
         return (
-          <FormMap items={items} form={this.props.form}/>
+          <React.Fragment>
+            <FormMap items={items} form={this.props.form} />
+            <Button onClick={handleSubmit}>确定</Button>
+          </React.Fragment>
         )
       }
     }
 
     const FormMapDemo = Form.create()(FM)
-
 
     return (
       <FormMapDemo></FormMapDemo>
@@ -47,4 +58,12 @@ import { FormMap } from 'hawkeye-arrow'
 
 ## API
 
-// <PropsTable of={FormMap} />
+<PropsTable of={FormMap} />
+
+### items
+
+| Property | Type | Required | Default | Description
+| - | - | - | - | - |
+| type | Enum | true | - | - |
+| initialValue | any | false | - | - |
+| key | string | true | - | - |
