@@ -4,6 +4,7 @@ menu: DataEntry
 ---
 
 import { Playground, PropsTable } from 'docz'
+import { Form } from 'antd'
 import { ImageUpload } from 'hawkeye-arrow'
 
 # ImageUpload
@@ -26,6 +27,34 @@ import { ImageUpload } from 'hawkeye-arrow'
     measure={{width: 640, height: 480}}
     length={5}
   ></ImageUpload>
+</Playground>
+
+## 支持Form
+<Playground>
+  {() => {
+    class IU extends React.Component {
+      render() {
+        const { getFieldDecorator } = this.props.form
+        return (
+          <Form.Item
+      >
+        {
+          getFieldDecorator('imageList', {
+          })(
+            <ImageUpload></ImageUpload>
+          )}
+      </Form.Item>
+        )
+      }
+    }
+
+    const ImageUploadDemo = Form.create()(IU)
+
+
+    return (
+      <ImageUploadDemo />
+    )
+  }}
 </Playground>
 
 ## API

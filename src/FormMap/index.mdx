@@ -1,0 +1,50 @@
+---
+name: FormMap 生成基础表单
+menu: DataEntry
+---
+
+import { Playground, PropsTable } from 'docz'
+import { Form } from 'antd'
+import { FormMap } from 'hawkeye-arrow'
+
+# FormMap
+
+## 基本用法
+
+<Playground>
+  {() => {
+    class FM extends React.Component {
+      render() {
+        const items = [{
+          name: 'inputDemo',
+          FormItemConfigs:{
+            label: '名称',
+            labelCol: { span: 6 },
+            wrapperCol: { span: 14 },
+          },
+          initialValue: 'nnecec',
+        }, {
+          name:'selectDemo',
+          type: 'select',
+          FormItemConfigs:{
+            label: '性别',
+          }
+        }]
+        return (
+          <FormMap items={items} form={this.props.form}/>
+        )
+      }
+    }
+
+    const FormMapDemo = Form.create()(FM)
+
+
+    return (
+      <FormMapDemo></FormMapDemo>
+    )
+  }}
+</Playground>
+
+## API
+
+// <PropsTable of={FormMap} />
