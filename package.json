@@ -20,11 +20,7 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
     "@babel/plugin-proposal-decorators": "^7.0.0-rc.1",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0-rc.1",
-    "@babel/preset-env": "^7.0.0-rc.1",
-    "@babel/preset-react": "^7.0.0-rc.1",
     "@types/antd": "^1.0.0",
     "@types/react": "^16.4.10",
     "css-loader": "^1.0.0",
@@ -46,6 +42,8 @@
     "rollup-plugin-uglify": "^4.0.0",
     "style-loader": "^0.22.1",
     "ts-loader": "^4.4.2",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.14.0",
     "typescript": "^3.0.1",
     "url-loader": "^1.0.1",
     "webpack": "^4.16.5",

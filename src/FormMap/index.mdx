@@ -16,7 +16,8 @@ import { FormItem } from './index.tsx'
 
 <Playground>
   {() => {
-    class FM extends React.Component {
+    @Form.create()
+    class FormDemo extends React.Component {
       render() {
         const items = [{
           key: 'inputDemo',
@@ -48,10 +49,8 @@ import { FormItem } from './index.tsx'
       }
     }
 
-    const FormMapDemo = Form.create()(FM)
-
     return (
-      <FormMapDemo></FormMapDemo>
+      <FormDemo />
     )
   }}
 </Playground>

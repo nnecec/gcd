@@ -19,22 +19,22 @@ interface ImageUploadProps {
   length?: number,
 }
 
-function getBase64(img, callback) {
+function getBase64(img, callback): void {
   const reader = new FileReader()
   reader.addEventListener('load', () => callback(reader.result))
   reader.readAsDataURL(img)
 }
 
 export default class ImageUpload extends React.Component<ImageUploadProps, any> {
-  static defaultProps = {
+  private static defaultProps = {
     length: Infinity
   }
-  state: {
+  private state: {
     previewVisible: boolean; // 预览图片 Modal 的 Visible 属性
     previewImage: string; // 预览图片的 url
-    fileList: Array<any>;
+    fileList: any[];
   };
-  props: ImageUploadProps;
+  private props: ImageUploadProps;
 
   constructor(props) {
     super(props)
@@ -45,16 +45,43 @@ export default class ImageUpload extends React.Component<ImageUploadProps, any> 
     }
   }
 
-  componentDidMount() {
+  public render() {
+    const { fileList, previewVisible, previewImage } = this.state
+    const { action, length } = this.props
+    return (
+      <div className="clearfix" >
+        <Upload
+          listType="picture-card"
+          action={action}
+          fileList={fileList}
+          onPreview={this.handlePreview}
+          onChange={this.handleChange}
+          beforeUpload={this.handleBeforeUpload}
+        >
+          {
+            fileList.length >= length ? null : <div>
+              <Icon type="plus" />
+            </div>
+          }
+        </Upload>
+        <Modal visible={previewVisible} footer={null} onCancel={this.handleCancelPreview}>
+          <img alt="example" style={{ width: '100%' }} src={previewImage} />
+        </Modal>
+      </div>
+
+    )
+  }
+
+  private componentDidMount() {
     console.log(this.props)
   }
 
-  componentWillReceiveProps(nextProps) {
+  private componentWillReceiveProps(nextProps) {
     console.log(nextProps)
   }
 
   private setFileList = () => {
-    
+
   }
 
   // 上传图片后的 change 调用
@@ -128,31 +155,4 @@ export default class ImageUpload extends React.Component<ImageUploadProps, any> 
 
   // 关闭图片预览
   private handleCancelPreview = () => this.setState({ previewVisible: false })
-
-  render() {
-    const { fileList, previewVisible, previewImage } = this.state
-    const { action, length } = this.props
-    return (
-      <div className="clearfix" >
-        <Upload
-          listType="picture-card"
-          action={action}
-          fileList={fileList}
-          onPreview={this.handlePreview}
-          onChange={this.handleChange}
-          beforeUpload={this.handleBeforeUpload}
-        >
-          {
-            fileList.length >= length ? null : <div>
-              <Icon type="plus" />
-            </div>
-          }
-        </Upload>
-        <Modal visible={previewVisible} footer={null} onCancel={this.handleCancelPreview}>
-          <img alt="example" style={{ width: '100%' }} src={previewImage} />
-        </Modal>
-      </div>
-
-    )
-  }
 }

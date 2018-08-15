@@ -21,12 +21,10 @@ export default {
   modifyBundlerConfig,
   port: 3005,
   plugins: [
-    // css({
-    //   preprocessor: 'postcss',
-    //   cssmodules: true,
-    //   loaderOpts: {
-    //     // javascriptEnabled: true
-    //   }
-    // })
-  ]
+
+  ],
+  modifyBabelRc: babelrc => {
+    babelrc.babelrc = true
+    return babelrc
+  }
 }

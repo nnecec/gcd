@@ -7,20 +7,28 @@ interface FormItem {
   type: 'input' | 'select'
 }
 interface FormMapProps {
-  items: Array<FormItem>
+  items: FormItem[]
 }
-export default class FormMap extends React.Component {
-  static defaultProps = {
+export default class FormMap extends React.Component<FormMapProps, any> {
+  private static defaultProps = {
     length: Infinity
   }
-  state: {
+  private state: {
     previewVisible: boolean // 预览图片 Modal 的 Visible 属性
     previewImage: string // 预览图片的 url
-    fileList: Array<any>
+    fileList: any[]
   }
-  props: FormMapProps
+  private props: FormMapProps
 
-  getItemByType = (item) => {
+  public render() {
+    return (
+      <React.Fragment>
+        {this.renderForm()}
+      </React.Fragment>
+    )
+  }
+
+  private getItemByType = (item) => {
     const { type, configs } = item
     let FieldItem
 
@@ -37,7 +45,7 @@ export default class FormMap extends React.Component {
 
     return FieldItem
   }
-  renderItem = item => {
+  private renderItem = item => {
     const { form } = this.props
     const { getFieldDecorator } = form
     const { key, initialValue, FormItemConfigs } = item
@@ -56,7 +64,7 @@ export default class FormMap extends React.Component {
     )
   }
 
-  renderForm = () => {
+  private renderForm = () => {
     const { items } = this.props
     return items.map(item => {
       return (
@@ -65,14 +73,6 @@ export default class FormMap extends React.Component {
         </React.Fragment>
       )
     })
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        {this.renderForm()}
-      </React.Fragment>
-    )
   }
 }
 
