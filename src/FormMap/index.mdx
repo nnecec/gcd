@@ -1,6 +1,7 @@
 ---
 name: FormMap 生成基础表单
-menu: DataEntry
+route: /components/formMap
+menu: 组件
 ---
 
 import { Playground, PropsTable } from 'docz'
@@ -10,28 +11,34 @@ import { FormItem } from './index.tsx'
 
 # FormMap
 
+提供 Antd 组件的基础表单生成。
+
 ## 基本用法
 
 必须由外部建立 Form, 并传入 FormMap 的 `form` 属性。
 
 <Playground>
   {() => {
-    @Form.create()
     class FormDemo extends React.Component {
       render() {
         const items = [{
           key: 'inputDemo',
-          FormItemConfigs:{
-            label: '名称',
-            labelCol: { span: 6 },
-            wrapperCol: { span: 14 },
-          },
           initialValue: 'nnecec',
+          formItemConfigs:{
+            label: '名称',
+          },
         }, {
           key:'selectDemo',
-          type: 'select',
-          FormItemConfigs:{
+          formItemConfigs:{
             label: '性别',
+          },
+          type: {
+            name: 'Select',
+            options: [{
+              value: 0, mean: '女'
+            }, {
+              value: 1, mean: '男'
+            }],
           }
         }]
         const handleSubmit = (e) => {
@@ -49,8 +56,10 @@ import { FormItem } from './index.tsx'
       }
     }
 
+    const Demo = Form.create()(FormDemo)
+
     return (
-      <FormDemo />
+      <Demo />
     )
   }}
 </Playground>
