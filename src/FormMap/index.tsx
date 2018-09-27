@@ -16,15 +16,16 @@ interface FormItemConfig {
   type: ItemTypeConfig
 }
 interface FormMapProps {
-  items: FormItemConfig[]
+  items: FormItemConfig[],
+  form: any
 }
 export default class FormMap extends React.Component<FormMapProps, any> {
-  private state: {
+  public state: {
     previewVisible: boolean // 预览图片 Modal 的 Visible 属性
     previewImage: string // 预览图片的 url
     fileList: any[]
   }
-  private props: FormMapProps
+  public props: FormMapProps
 
   public render() {
     return (

@@ -29,12 +29,13 @@ export default class ImageUpload extends React.Component<ImageUploadProps, any> 
   private static defaultProps = {
     length: Infinity
   }
-  private state: {
+  public props: ImageUploadProps;
+
+  public state: {
     previewVisible: boolean; // 预览图片 Modal 的 Visible 属性
     previewImage: string; // 预览图片的 url
     fileList: any[];
   };
-  private props: ImageUploadProps;
 
   constructor(props) {
     super(props)
@@ -72,11 +73,11 @@ export default class ImageUpload extends React.Component<ImageUploadProps, any> 
     )
   }
 
-  private componentDidMount() {
+  public componentDidMount() {
     console.log(this.props)
   }
 
-  private componentWillReceiveProps(nextProps) {
+  public componentWillReceiveProps(nextProps) {
     console.log(nextProps)
   }
 

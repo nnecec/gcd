@@ -10,12 +10,10 @@ export default class SearchBar extends React.Component<SearchBarProps, any> {
   private static defaultProps = {
     title: 'demo'
   }
-  private state: {
-    previewVisible: boolean; // 预览图片 Modal 的 Visible 属性
-    previewImage: string; // 预览图片的 url
-    fileList: any[];
+  public state: {
+    
   };
-  private props: SearchBarProps;
+  public props: SearchBarProps;
 
   constructor(props) {
     super(props)

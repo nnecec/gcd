@@ -39,7 +39,7 @@ const plugins = [
   less(),
   postcss({ extract: true }),
   buble(),
-  // uglify(),
+  uglify(),
 ]
 
 const dependencies = Object.keys(require('../package.json').dependencies)
@@ -51,7 +51,12 @@ export default {
     format: 'umd',
     name: 'arrow',
     sourceMap: false,
+    globals: {
+      react: 'React',
+      antd: 'antd'
+    },
   },
   plugins,
+
   external: dependencies,
 }
