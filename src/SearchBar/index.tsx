@@ -8,7 +8,7 @@ interface SearchBarProps {
 
 export default class SearchBar extends React.Component<SearchBarProps, any> {
   private static defaultProps = {
-    length: Infinity
+    title: 'demo'
   }
   private state: {
     previewVisible: boolean; // 预览图片 Modal 的 Visible 属性
