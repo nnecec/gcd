@@ -1,0 +1,12 @@
+.docz/
+.rpt2_cache/
+scripts/
+src/**/*.mdx
+.vscode/
+
+.gitattributes
+.babelrc
+doczrc.js
+tsconfig.json
+tslint.json
+yarn.lock

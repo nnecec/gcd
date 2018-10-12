@@ -11,14 +11,12 @@ export default class SearchBar extends React.Component<SearchBarProps, any> {
     title: 'demo'
   }
   public state: {
-    
+
   };
   public props: SearchBarProps;
 
   constructor(props) {
     super(props)
-    this.state = {
-    }
   }
 
   public render() {
