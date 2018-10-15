@@ -1,26 +1,77 @@
+
+
 import * as React from 'react'
-import { Upload, Modal, Icon, message } from 'antd'
+import { Button, Form, message, Input, Row } from 'antd'
+import generateItem from './render'
+
+const FormItem = Form.Item
+
+
 
 interface SearchBarProps {
   /** 表单标题 */
-  title: string,
+  fields: Field[],
 }
 
-export default class SearchBar extends React.Component<SearchBarProps, any> {
+interface Field {
+  type: string,
+  key: string,
+  title: string,
+  items?: () => void | object[],
+}
+
+class SearchBar extends React.Component<SearchBarProps, any> {
   private static defaultProps = {
     title: 'demo'
   }
   public state: {
 
-  };
-  public props: SearchBarProps;
+  }
+  public props: SearchBarProps
 
   constructor(props) {
     super(props)
   }
 
+  // 渲染各种搜索条件
+  public renderItems = (fields) => {
+    const { form } = this.props
+
+    const fieldsFormed = fields.map(field => {
+      return generateItem(field, form)
+    })
+
+    return fieldsFormed
+  }
+
+  // 查询
+  public handleSearch = (e) => {
+    e.preventDefault()
+    console.log('search submit')
+
+    this.props.form.validateFields((err, values) => {
+      console.log(err, values)
+    })
+  }
+
+
+  // 重置
+  public handleReset = () => { }
+
   public render() {
-    return (<div>searchBar</div>)
+    const { fields, form } = this.props
+
+    return (<Form onSubmit={this.handleSearch}>
+
+      <Row gutter={4}>
+        {this.renderItems(fields)}
+      </Row>
+
+      <Button onClick={this.handleReset} >重置</Button>
+      <Button type="primary" icon="search" htmlType="submit">搜索</Button>
+    </Form>)
   }
 
 }
+
+export default Form.create()(SearchBar)

@@ -1,5 +1,5 @@
 ---
-name: SearchBar 列表搜索
+name: SearchBar 搜索框
 route: /components/searchBar
 menu: 组件
 ---
@@ -12,8 +12,22 @@ import { SearchBar } from 'hawkeye-arrow'
 
 ## 基本用法
 
+传入搜索条件的参数，生成对应的 SearchBar
+
 <Playground>
-  <SearchBar></SearchBar>
+  <SearchBar 
+    fields={[{
+      type: 'input',
+      key: 'name',
+      title: '名称',
+      required: true
+    }, {
+      type: 'select',
+      key: 'sex',
+      title: '性别',
+      items: [{ value: 1, mean: '男' }, { value: 2, mean: '女' }]
+    }]} 
+  />
 </Playground>
 
 ## API
