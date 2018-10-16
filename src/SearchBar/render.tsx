@@ -32,13 +32,17 @@ const generateItem = (field, form) => {
       break;
   }
 
+  let rules = []
+
+  if (field.rules) {
+    rules = field.rules
+  }
+
   return (
     <Col span={6}>
       <FormItem {...formItemLayout} label={field.title} key={field.key}>
         {form.getFieldDecorator(field.key, {
-          rules: [{
-            required: field.required,
-          }],
+          rules
         })(item)}
       </FormItem>
     </Col>)

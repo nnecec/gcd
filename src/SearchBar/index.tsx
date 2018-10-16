@@ -46,11 +46,13 @@ class SearchBar extends React.Component<SearchBarProps, any> {
 
   // 查询
   public handleSearch = (e) => {
+    const { form, onSearch } = this.props
     e.preventDefault()
-    console.log('search submit')
 
-    this.props.form.validateFields((err, values) => {
-      console.log(err, values)
+    form.validateFields((err, values) => {
+      if (!err) {
+        onSearch(values)
+      }
     })
   }
 

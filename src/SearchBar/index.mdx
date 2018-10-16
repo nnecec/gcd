@@ -17,12 +17,17 @@ import { SearchBar } from 'hawkeye-arrow'
 传入需要的搜索条件参数，生成对应的 SearchBar。
 
 <Playground>
-  <SearchBar 
+  <SearchBar
+    onSearch={(values) => {
+      console.log(values)
+    }}
     fields={[{
       type: 'input',
       key: 'name',
       title: '名称',
-      required: true,
+      rules: [{
+        required: true
+      }],
       onChange: (form) => form.resetFields(['sex'])
     }, {
       type: 'select',
