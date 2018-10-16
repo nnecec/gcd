@@ -5,6 +5,7 @@ const Option = Select.Option
 
 const formItemLayout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } }
 
+function noop() { }
 
 const generateItem = (field, form) => {
   let item = null
@@ -23,7 +24,10 @@ const generateItem = (field, form) => {
 
     default:
       item = (
-        <Input />
+        <Input onChange={e => {
+          if (field.onChange) return field.onChange(form)
+          return noop()
+        }} />
       )
       break;
   }

@@ -10,9 +10,11 @@ import { SearchBar } from 'hawkeye-arrow'
 
 # SearchBar
 
+内部使用 `Form`。
+
 ## 基本用法
 
-传入搜索条件的参数，生成对应的 SearchBar
+传入需要的搜索条件参数，生成对应的 SearchBar。
 
 <Playground>
   <SearchBar 
@@ -20,7 +22,8 @@ import { SearchBar } from 'hawkeye-arrow'
       type: 'input',
       key: 'name',
       title: '名称',
-      required: true
+      required: true,
+      onChange: (form) => form.resetFields(['sex'])
     }, {
       type: 'select',
       key: 'sex',
