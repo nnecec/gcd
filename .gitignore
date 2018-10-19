@@ -4,4 +4,3 @@ dist
 .docz
 
 package-lock.json
-yarn.lock

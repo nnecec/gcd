@@ -7,3 +7,15 @@
 dev: `npm start` and open your browser : `localhost:3005`
 
 build: `npm run build:rollup`
+
+## Docz configs
+
+mdx configs:
+
+```markdown
+---
+name: Button
+route: /components/button
+menu: Components
+---
+```
