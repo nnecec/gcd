@@ -2,23 +2,11 @@
 
 import * as React from 'react'
 import { Button, Form, message, Input, Row } from 'antd'
+
+import { SearchBarProps } from './iSearchBar'
 import generateItem from './render'
 
 const FormItem = Form.Item
-
-
-
-interface SearchBarProps {
-  /** 表单标题 */
-  fields: Field[],
-}
-
-interface Field {
-  type: string,
-  key: string,
-  title: string,
-  items?: () => void | object[],
-}
 
 class SearchBar extends React.Component<SearchBarProps, any> {
   private static defaultProps = {
@@ -58,7 +46,10 @@ class SearchBar extends React.Component<SearchBarProps, any> {
 
 
   // 重置
-  public handleReset = () => { }
+  public handleReset = () => {
+    const { form } = this.props
+    form.resetFields()
+  }
 
   public render() {
     const { fields, form } = this.props

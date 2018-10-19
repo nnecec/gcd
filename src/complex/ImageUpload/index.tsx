@@ -25,6 +25,9 @@ function getBase64(img, callback): void {
   reader.readAsDataURL(img)
 }
 
+/**
+ * ImageUpload.
+ */
 export default class ImageUpload extends React.Component<ImageUploadProps, any> {
   private static defaultProps = {
     length: Infinity

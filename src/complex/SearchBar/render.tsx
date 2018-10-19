@@ -7,30 +7,30 @@ const formItemLayout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } }
 
 function noop() { }
 
-const generateItem = (field, form) => {
+const generateItem = (field: any, form) => {
   let item = null
-  switch (field.type) {
-    case 'select':
-      item = (
-        <Select>
-          {
-            field.items.map(item => (
-              <Option key={item.value} value={item.value}>{item.mean}</Option>
-            ))
-          }
-        </Select>
-      )
-      break;
 
-    default:
-      item = (
-        <Input onChange={e => {
-          if (field.onChange) return field.onChange(form)
-          return noop()
-        }} />
-      )
-      break;
+  const CUSTOM_FIELDS = {
+    // select
+    select: (
+      <Select>
+        {
+          field.items && field.items.map(item => (
+            <Option key={item.value} value={item.value}>{item.mean}</Option>
+          ))
+        }
+      </Select>
+    ),
+    //
   }
+
+  // 为 item 匹配符合 type 的组件类型
+  item = CUSTOM_FIELDS[field.type] || (
+    <Input onChange={e => {
+      if (field.onChange) return field.onChange(form)
+      return noop()
+    }} />
+  )
 
   let rules = []
 
@@ -42,6 +42,7 @@ const generateItem = (field, form) => {
     <Col span={6}>
       <FormItem {...formItemLayout} label={field.title} key={field.key}>
         {form.getFieldDecorator(field.key, {
+          initialValue: field.initialValue || undefined,
           rules
         })(item)}
       </FormItem>
