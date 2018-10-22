@@ -3,8 +3,6 @@ export interface SearchBarProps {
   fields: Field[],
   /** 搜索调用方法 */
   onSearch: (values) => void,
-  /**  */
-  form: any
 }
 
 interface Field {
@@ -22,5 +20,4 @@ interface Field {
   rules?: object[],
   /** 子项 onChange 回调 */
   onChange?: () => void,
-
 }

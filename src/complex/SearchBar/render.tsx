@@ -33,7 +33,7 @@ const generateItem = (field: any, form) => {
   )
 
   // 设置通用绑定的方法或属性
-  const componentProps = field.componentProps || {}
+  const componentProps = field.componentProps || {} // onChange 之外的组件方法/属性
   const ModifyProps = props => ({
     onChange: e => {
       if (field.onChange) return field.onChange(form)

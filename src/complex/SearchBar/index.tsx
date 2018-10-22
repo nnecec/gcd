@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Button, Form, message, Input, Row, Col } from 'antd'
+import { FormComponentProps } from 'antd/lib/form/Form'
 import { debounce } from 'lodash'
 
 import { SearchBarProps } from './iSearchBar'
@@ -7,11 +8,11 @@ import generateItem from './render'
 
 const FormItem = Form.Item
 
-class SearchBar extends React.Component<SearchBarProps, any> {
+class SearchBar extends React.Component<SearchBarProps & FormComponentProps, any> {
   public state: {
 
   }
-  public props: SearchBarProps
+  public props: SearchBarProps & FormComponentProps
 
   constructor(props) {
     super(props)
