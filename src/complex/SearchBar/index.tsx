@@ -1,7 +1,6 @@
-
-
 import * as React from 'react'
-import { Button, Form, message, Input, Row } from 'antd'
+import { Button, Form, message, Input, Row, Col } from 'antd'
+import { debounce } from 'lodash'
 
 import { SearchBarProps } from './iSearchBar'
 import generateItem from './render'
@@ -9,9 +8,6 @@ import generateItem from './render'
 const FormItem = Form.Item
 
 class SearchBar extends React.Component<SearchBarProps, any> {
-  private static defaultProps = {
-    title: 'demo'
-  }
   public state: {
 
   }
@@ -34,14 +30,17 @@ class SearchBar extends React.Component<SearchBarProps, any> {
 
   // 查询
   public handleSearch = (e) => {
-    const { form, onSearch } = this.props
     e.preventDefault()
 
+
+    const { form, onSearch } = this.props
     form.validateFields((err, values) => {
       if (!err) {
         onSearch(values)
       }
     })
+
+
   }
 
 
@@ -54,14 +53,17 @@ class SearchBar extends React.Component<SearchBarProps, any> {
   public render() {
     const { fields, form } = this.props
 
-    return (<Form onSubmit={this.handleSearch}>
+    return (<Form onSubmit={this.handleSearch} layout="inline">
 
       <Row gutter={4}>
         {this.renderItems(fields)}
       </Row>
 
-      <Button onClick={this.handleReset} >重置</Button>
-      <Button type="primary" icon="search" htmlType="submit">搜索</Button>
+      <Col span={24} style={{ textAlign: 'right' }}>
+        <Button onClick={this.handleReset} style={{ marginRight: 10 }}>重置</Button>
+        <Button type="primary" icon="search" htmlType="submit">搜索</Button>
+      </Col>
+
     </Form>)
   }
 

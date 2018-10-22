@@ -20,7 +20,8 @@ const plugins = [
   }),
 
   rollupTypescript({
-    typescript
+    typescript,
+    abortOnError: false
   }),
   commonjs({
     include: 'node_modules/**',

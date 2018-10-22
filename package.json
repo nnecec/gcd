@@ -17,6 +17,7 @@
   "dependencies": {
     "antd": "^3.10.0",
     "buble": "0.19.4",
+    "lodash": "^4.17.11",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "styled-components": "^4.0.2"
