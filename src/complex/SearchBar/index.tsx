@@ -28,10 +28,10 @@ class SearchBar extends React.Component<SearchBarProps, any> {
     return fieldsFormed
   }
 
+  // TODO: debounce
   // 查询
   public handleSearch = (e) => {
     e.preventDefault()
-
 
     const { form, onSearch } = this.props
     form.validateFields((err, values) => {
@@ -39,8 +39,7 @@ class SearchBar extends React.Component<SearchBarProps, any> {
         onSearch(values)
       }
     })
-
-
+    return false
   }
 
 
@@ -54,7 +53,6 @@ class SearchBar extends React.Component<SearchBarProps, any> {
     const { fields, form } = this.props
 
     return (<Form onSubmit={this.handleSearch} layout="inline">
-
       <Row gutter={4}>
         {this.renderItems(fields)}
       </Row>

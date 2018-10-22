@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "antd": "^3.10.0",
-    "buble": "0.19.4",
     "lodash": "^4.17.11",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -24,7 +23,9 @@
   },
   "devDependencies": {
     "@types/antd": "^1.0.0",
+    "@types/lodash": "^4.14.117",
     "@types/react": "^16.4.16",
+    "buble": "0.19.4",
     "css-loader": "^1.0.0",
     "docz": "^0.12.5",
     "docz-core": "^0.12.5",

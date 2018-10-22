@@ -1,24 +1,14 @@
 import * as React from 'react'
-import { Button, Form, message, Input, Select, Col } from 'antd'
+import { Button, Form, message, Input, Select, Col, DatePicker } from 'antd'
 const FormItem = Form.Item
 const Option = Select.Option
-
+const { RangePicker } = DatePicker
 const formItemLayout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } }
 
 function noop() { }
 
 const generateItem = (field: any, form) => {
   let item = null
-
-  // 设置通用绑定的方法或属性
-  const ModifyProps = props => ({
-    onChange: e => {
-      if (field.onChange) return field.onChange(form)
-      return noop()
-    },
-
-    style: field.style || props.style
-  })
 
   const CUSTOM_FIELDS = {
     // select
@@ -31,7 +21,10 @@ const generateItem = (field: any, form) => {
         }
       </Select>
     ),
-    //
+    // DatePicker
+    datePicker: (<DatePicker />),
+    // RangePicker
+    rangePicker: (<RangePicker />),
   }
 
   // 为 item 匹配符合 type 的组件类型
@@ -39,13 +32,21 @@ const generateItem = (field: any, form) => {
     <Input />
   )
 
+  // 设置通用绑定的方法或属性
+  const componentProps = field.componentProps || {}
+  const ModifyProps = props => ({
+    onChange: e => {
+      if (field.onChange) return field.onChange(form)
+      return noop()
+    },
+
+    style: field.style || props.style,
+    disabled: field.disabled,
+    ...componentProps
+  })
   const FinalItem = React.cloneElement(item, ModifyProps(item.props))
 
-  let rules = []
-
-  if (field.rules) {
-    rules = field.rules
-  }
+  const rules = field.rules && field.rules.length ? field.rules : []
 
   return (
     <FormItem {...formItemLayout} label={field.title} key={field.key}>

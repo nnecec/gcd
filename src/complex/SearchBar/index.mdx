@@ -69,6 +69,28 @@ import { SearchBarProps } from './iSearchBar'
   />
 </Playground>
 
+## 支持多种类型组件
+
+<Playground>
+  <SearchBar
+    onSearch={(values) => {
+      console.log(values)
+    }}
+    fields={[{
+      type: 'datePicker',
+      key: 'date',
+      title: '日期',
+    }, {
+      type: 'rangePicker',
+      key: 'sex',
+      title: '日期范围',
+      componentProps: {
+        onOpenChange: (status) => console.log(status)
+      }
+    }]} 
+  />
+</Playground>
+
 ## API
 
 <PropsTable of={SearchBar} />
