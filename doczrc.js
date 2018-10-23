@@ -17,6 +17,8 @@ const modifyBundlerConfig = config => {
 }
 
 export default {
+  title: 'hawkeye-arrow',
+  ordering: 'ascending',
   typescript: true,
   modifyBundlerConfig,
   port: 3005,
@@ -26,5 +28,11 @@ export default {
   modifyBabelRc: babelrc => {
     babelrc.babelrc = true
     return babelrc
-  }
+  },
+  themeConfig: {
+    colors: {
+      primary: '#FE7519',
+      link: '#61DAFB',
+    }
+  },
 }
