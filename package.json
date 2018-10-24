@@ -9,7 +9,7 @@
     "build:docz": "docz build",
     "build:rollup": "rollup -c scripts/rollup.config.js",
     "start": "npm run dev:docz",
-    "gen:c": "ts-node scripts/generateComponent.ts"
+    "gen:c": "ts-node scripts/shot/generateComponent.ts"
   },
   "repository": {
     "type": "git",

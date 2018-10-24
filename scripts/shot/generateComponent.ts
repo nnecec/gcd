@@ -3,9 +3,8 @@
  */
 
 import * as fs from 'fs'
-import * as path from 'fs'
+import * as path from 'path'
 import * as inquirer from 'inquirer'
-
 
 inquirer
   .prompt([{
@@ -28,7 +27,7 @@ inquirer
 
     fs.mkdir(`${route}/${name}`, (err) => {
       if (err) {
-        console.log(err.message)
+        console.error(err.message)
         return
       }
 
