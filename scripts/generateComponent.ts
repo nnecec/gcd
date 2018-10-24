@@ -22,17 +22,38 @@ inquirer
     message: '请输入组件名称',
   }])
   .then(async answers => {
-    const route = `src/${answers.route.split(':')[0]}/`
+    const type = answers.route.split(':')[0]
+    const route = `src/${type}`
     const name = answers.name
 
-    console.log(route, name)
+    fs.mkdir(`${route}/${name}`, (err) => {
+      if (err) {
+        console.log(err.message)
+        return
+      }
 
-    await fs.mkdirSync(`${route}${name}`)
-
-    const INDEX_TSX = `
-    import * as React from 'react'
-    import { Button } from 'antd'
+      // 写入 index.tsx
+      const INDEX_TSX = `import * as React from 'react'\nimport { Button } from 'antd\n'
     `
-    fs.writeFile(`${route}${name}/${name}.tsx`, INDEX_TSX, (err) => { })
+      fs.writeFile(`${route}/${name}/index.tsx`, INDEX_TSX, (err) => { })
+
+
+      // 写入 index.mdx
+      const INDEX_MDX = `---\nname: ${name}\nroute: /components/type/${name.toLowerCase()}\nmenu: ${firstUpperCase(type)} Components\n---\n\nimport { Playground, PropsTable } from 'docz'\nimport { ${name} } from 'hawkeye-arrow'\n`
+
+      fs.writeFile(`${route}/${name}/index.mdx`, INDEX_MDX, (err) => { })
+
+      // 添加到 type/index.ts 中
+      let INDEX_TS = fs.readFileSync(`${route}/index.ts`, "utf-8")
+      INDEX_TS += `export { default as ${name} } from './${name}'\n`
+
+      fs.writeFile(`${route}/index.ts`, INDEX_TS, (err) => { })
+    })
 
   })
+
+
+
+function firstUpperCase(str) {
+  return str.replace(/^\S/, (s) => s.toUpperCase())
+}
