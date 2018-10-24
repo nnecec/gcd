@@ -3,11 +3,18 @@ import { Button, Form, message, Input, Row, Col } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 import { debounce } from 'lodash'
 
+import { SearchBarActionStyled } from './styled'
 import { SearchBarProps } from './iSearchBar'
 import generateItem from './render'
 
-const FormItem = Form.Item
-
+/**
+ * 搜索条
+ * 内部支持 form 方法与校验
+ * 支持多种组件及自定义组件
+ *
+ * @class SearchBar
+ * @extends {(React.Component<SearchBarProps & FormComponentProps, any>)}
+ */
 class SearchBar extends React.Component<SearchBarProps & FormComponentProps, any> {
   public state: {
 
@@ -58,10 +65,10 @@ class SearchBar extends React.Component<SearchBarProps & FormComponentProps, any
         {this.renderItems(fields)}
       </Row>
 
-      <Col span={24} style={{ textAlign: 'right' }}>
+      <SearchBarActionStyled>
         <Button onClick={this.handleReset} style={{ marginRight: 10 }}>重置</Button>
         <Button type="primary" icon="search" htmlType="submit">搜索</Button>
-      </Col>
+      </SearchBarActionStyled>
 
     </Form>)
   }

@@ -1,5 +1,8 @@
 import * as React from 'react'
 import { Button, Form, message, Input, Select, Col, DatePicker } from 'antd'
+
+import { Field } from './iSearchBar'
+
 const FormItem = Form.Item
 const Option = Select.Option
 const { RangePicker } = DatePicker
@@ -7,7 +10,15 @@ const formItemLayout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } }
 
 function noop() { }
 
-const generateItem = (field: any, form) => {
+
+/**
+ * 生成单个检索条件组件
+ *
+ * @param {Field} field 生成检索条件的配置项
+ * @param {*} form SearchBar 传入的 form
+ * @returns
+ */
+function generateItem(field: Field, form) {
   let item = null
 
   const CUSTOM_FIELDS = {
@@ -44,8 +55,10 @@ const generateItem = (field: any, form) => {
     disabled: field.disabled,
     ...componentProps
   })
+  // 最终配置完成的组件
   const FinalItem = React.cloneElement(item, ModifyProps(item.props))
 
+  // 配置校验规则
   const rules = field.rules && field.rules.length ? field.rules : []
 
   return (

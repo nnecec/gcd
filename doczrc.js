@@ -18,7 +18,6 @@ const modifyBundlerConfig = config => {
 
 export default {
   title: 'hawkeye-arrow',
-  ordering: 'ascending',
   typescript: true,
   modifyBundlerConfig,
   port: 3005,
