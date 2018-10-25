@@ -1,7 +1,7 @@
 {
   "name": "hawkeye-arrow",
   "description": "I'm hawkeye's Arrow.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/index",
   "license": "MIT",
   "scripts": {
