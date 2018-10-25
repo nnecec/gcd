@@ -9,7 +9,8 @@
     "build:docz": "docz build",
     "build:rollup": "rollup -c scripts/rollup.config.js",
     "start": "npm run dev:docz",
-    "gen:c": "ts-node scripts/generateComponent.ts"
+    "gen:c": "ts-node scripts/generateComponent.ts",
+    "test": "jest --config jest.config.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
   },
   "devDependencies": {
     "@types/antd": "^1.0.0",
+    "@types/enzyme": "^3.1.14",
+    "@types/jest": "^23.3.7",
     "@types/lodash": "^4.14.117",
     "@types/react": "^16.4.16",
     "buble": "0.19.4",
@@ -31,7 +34,11 @@
     "docz": "^0.12.5",
     "docz-core": "^0.12.5",
     "docz-plugin-css": "^0.11.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
     "inquirer": "^6.2.0",
+    "jest": "^23.6.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "rollup": "^0.66.6",
@@ -44,6 +51,7 @@
     "rollup-plugin-typescript2": "^0.17.1",
     "rollup-plugin-uglify": "^6.0.0",
     "style-loader": "^0.23.1",
+    "ts-jest": "^23.10.4",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",

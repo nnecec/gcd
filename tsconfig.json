@@ -13,9 +13,6 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "types": [
-      "node"
-    ],
     "typeRoots": [
       "node_modules/@types"
     ],
