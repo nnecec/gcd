@@ -14,7 +14,7 @@ describe('SearchBar', () => {
       />
     )
 
-    wrapper.find('button[type="submit"]').simulate('click')
+    wrapper.find('[type="submit"]').simulate('submit')
     expect(onSearch).toBeCalled()
   })
 })
