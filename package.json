@@ -17,20 +17,22 @@
     "url": "git://github.com/nnecec/arrow.git"
   },
   "dependencies": {
-    "antd": "^3.10.0",
+    "antd": "^3.10.3",
     "lodash": "^4.17.11",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
     "styled-components": "^4.0.2"
   },
   "devDependencies": {
     "@types/antd": "^1.0.0",
     "@types/enzyme": "^3.1.14",
-    "@types/jest": "^23.3.7",
+    "@types/inquirer": "^0.0.43",
+    "@types/jest": "^23.3.8",
     "@types/lodash": "^4.14.117",
+    "@types/node": "^10.12.1",
     "@types/react": "^16.4.16",
     "buble": "0.19.4",
-    "css-loader": "^1.0.0",
+    "css-loader": "^1.0.1",
     "docz": "^0.12.5",
     "docz-core": "^0.12.5",
     "docz-plugin-css": "^0.11.0",
@@ -48,13 +50,13 @@
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-replace": "^2.1.0",
-    "rollup-plugin-typescript2": "^0.17.1",
+    "rollup-plugin-typescript2": "^0.17.2",
     "rollup-plugin-uglify": "^6.0.0",
     "style-loader": "^0.23.1",
     "ts-jest": "^23.10.4",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
-    "typescript": "^3.1.3"
+    "typescript": "^3.1.4"
   }
 }

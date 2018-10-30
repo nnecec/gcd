@@ -3,12 +3,11 @@
  */
 
 import * as fs from 'fs'
-import * as path from 'fs'
 import * as inquirer from 'inquirer'
 
 
 async function generateComponents() {
-  const answers = await inquirer
+  const answers: any = await inquirer
     .prompt([{
       type: 'list',
       name: 'route',
@@ -36,15 +35,35 @@ async function generateComponents() {
 
     // index.tsx
     const INDEX_PROPS = `${name}Props`
-    const INDEX_TSX = `import * as React from 'react'\nimport { Button } from 'antd'\n\nimport { ${INDEX_PROPS} } from './i${name}'\n\nexport default class ${name} extends React.Component<${INDEX_PROPS}, any> {\n\tpublic props: ${INDEX_PROPS}\n\tpublic state: {\n\n\t}\n\tconstructor(props) {\n\t\tsuper(props)\n\t}\n\n\tpublic render() {\n\t\treturn (<div></div>)\n\t}\n}\n`
+    const INDEX_TSX = `import * as React from 'react'\n` +
+      `import { Button } from 'antd'\n\n` +
+      `import { ${INDEX_PROPS} } from './i${name}'\n\n` +
+      `export default class ${name} extends React.Component<${INDEX_PROPS}, any> {\n` +
+      `\tpublic props: ${INDEX_PROPS}\n` +
+      `\tpublic state: {\n\n` +
+      `\t}\n` +
+      `\tconstructor(props) {\n` +
+      `\t\tsuper(props)\n` +
+      `\t}\n\n` +
+      `\tpublic render() {\n` +
+      `\t\treturn (<div></div>)\n` +
+      `\t}\n` +
+      `}\n`
     fs.writeFile(`${route}/${name}/index.tsx`, INDEX_TSX, (err) => { })
 
     // interface
-    const INTERFACE_TS = `export interface ${INDEX_PROPS} {\n\n}\n`
+    const INTERFACE_TS = `export interface ${INDEX_PROPS} {\n\n` +
+      `}\n`
     fs.writeFile(`${route}/${name}/i${name}.ts`, INTERFACE_TS, (err) => { })
 
     // index.mdx
-    const INDEX_MDX = `---\nname: ${name}\nroute: /components/type/${name.toLowerCase()}\nmenu: ${firstUpperCase(type)} Components\n---\n\nimport { Playground, PropsTable } from 'docz'\nimport { ${name} } from 'hawkeye-arrow'\n`
+    const INDEX_MDX = `---\n` +
+      `name: ${name}\n` +
+      `route: /components/type/${name.toLowerCase()}\n` +
+      `menu: ${firstUpperCase(type)} Components\n` +
+      `---\n\n` +
+      `import { Playground, PropsTable } from 'docz'\n` +
+      `import { ${name} } from 'hawkeye-arrow'\n`
     fs.writeFile(`${route}/${name}/index.mdx`, INDEX_MDX, (err) => { })
 
     // 添加到 type/index.ts 中

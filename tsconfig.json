@@ -3,7 +3,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "target": "es6",
-    "module": "ES2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",
     "sourceMap": true,
