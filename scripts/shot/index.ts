@@ -6,18 +6,27 @@ import * as fs from 'fs'
 import * as path from 'path'
 import * as inquirer from 'inquirer'
 
-inquirer
-  .prompt([{
+import generateComponent from './generateComponent'
+
+(async () => {
+  const answers = await inquirer.prompt([{
     type: 'rawlist',
     name: 'shot',
     message: 'please choose one arrow to shot',
     choices: [
-      'generateComponent',
+      'generate component',
     ]
   }])
-  .then(async answers => {
 
-    const { shot } = answers
+  const { shot } = answers
 
-    
-  })
+  switch (shot) {
+    case 'generate component':
+      generateComponent()
+      break
+    default:
+      return
+  }
+
+
+})()

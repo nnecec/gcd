@@ -9,12 +9,8 @@
     "build:docz": "docz build",
     "build:rollup": "rollup -c scripts/rollup.config.js",
     "start": "npm run dev:docz",
-<<<<<<< HEAD
-    "gen:c": "ts-node scripts/shot/generateComponent.ts"
-=======
-    "gen:c": "ts-node scripts/generateComponent.ts",
-    "test": "jest --config jest.config.js"
->>>>>>> cdb0693c6e0209c99aeac3d3efab9a4861569b4f
+    "test": "jest --config jest.config.js",
+    "shot": "ts-node scripts/shot"
   },
   "repository": {
     "type": "git",

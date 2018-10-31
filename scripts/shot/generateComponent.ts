@@ -6,7 +6,7 @@ import * as fs from 'fs'
 import * as inquirer from 'inquirer'
 
 
-async function generateComponents() {
+export default async function generateComponents() {
   const answers: any = await inquirer
     .prompt([{
       type: 'list',
@@ -77,5 +77,3 @@ async function generateComponents() {
 function firstUpperCase(str) {
   return str.replace(/^\S/, (s) => s.toUpperCase())
 }
-
-generateComponents()
