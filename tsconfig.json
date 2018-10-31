@@ -3,6 +3,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "target": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",
     "sourceMap": true,
@@ -12,12 +13,9 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "types": [
-      "node"
-    ],
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
   },
   "include": [
     "src/**/*"

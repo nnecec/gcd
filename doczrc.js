@@ -30,8 +30,8 @@ export default {
   },
   themeConfig: {
     colors: {
-      primary: '#FE7519',
-      link: '#61DAFB',
+      primary: '#0B1749',
+      link: '#1C4598',
     }
   },
 }

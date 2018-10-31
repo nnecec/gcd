@@ -39,7 +39,9 @@ const plugins = [
   }),
   less(),
   postcss({ extract: true }),
-  buble(),
+  buble({
+    transforms: { dangerousTaggedTemplateString: true } // fix styled-components error
+  }),
   uglify(),
 ]
 

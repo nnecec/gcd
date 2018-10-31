@@ -26,7 +26,7 @@ class SearchBar extends React.Component<SearchBarProps & FormComponentProps, any
   }
 
   // 渲染各种搜索条件
-  public renderItems = (fields) => {
+  public renderItems = (fields = []) => {
     const { form } = this.props
 
     const fieldsFormed = fields.map(field => {
