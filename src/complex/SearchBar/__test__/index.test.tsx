@@ -3,8 +3,6 @@ import { shallow, mount } from 'enzyme'
 import SearchBar from '..'
 
 describe('SearchBar', () => {
-
-
   test('could submit search', () => {
     const onSearch = jest.fn()
     const wrapper = mount(
@@ -13,8 +11,10 @@ describe('SearchBar', () => {
         fields={[{ key: 'name', title: '名称' }]}
       />
     )
-
+    wrapper.find('input').simulate('change', { target: { value: 'shicheng' } });
     wrapper.find('[type="submit"]').simulate('submit')
-    expect(onSearch).toBeCalled()
+    expect(onSearch).toHaveBeenCalledWith({ name: 'shicheng' })
   })
+
 })
+
