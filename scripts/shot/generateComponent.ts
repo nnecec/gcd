@@ -6,7 +6,7 @@ import * as fs from 'fs'
 import * as inquirer from 'inquirer'
 
 
-export default async function generateComponents() {
+export default async function generateComponent() {
   const answers: any = await inquirer
     .prompt([{
       type: 'list',

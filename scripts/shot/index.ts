@@ -7,6 +7,7 @@ import * as path from 'path'
 import * as inquirer from 'inquirer'
 
 import generateComponent from './generateComponent'
+import generateComponentTests from './generateComponentTests'
 
 (async () => {
   const answers = await inquirer.prompt([{
@@ -15,6 +16,7 @@ import generateComponent from './generateComponent'
     message: 'please choose one arrow to shot',
     choices: [
       'generate component',
+      'generate component tests'
     ]
   }])
 
@@ -23,6 +25,9 @@ import generateComponent from './generateComponent'
   switch (shot) {
     case 'generate component':
       generateComponent()
+      break
+    case 'generate component tests':
+      generateComponentTests()
       break
     default:
       return
