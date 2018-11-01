@@ -13,5 +13,5 @@ export interface ImageUploadProps {
   /** 校验图片尺寸  */
   measure?: Measure,
   /** 接受上传图片数量  */
-  length?: number,
+  length?: number
 }

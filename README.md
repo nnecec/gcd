@@ -1,21 +1,26 @@
-# hawkeye-arrow
+# 🏹️ Hawkeye Arrow️
 
-🏹️
+To build components library and generate comprehensive documentation through a easy way.
+
+## Why?
+
+We inevitably encounter complex component requirements in business development.
+
+The purpose of this library is to write a complete documentation to the component with a minimum of extra work.
+
+So, we import:
+
+- [docz](https://github.com/pedronauck/docz): generate documentation
+- [Ant.Design](https://github.com/ant-design/ant-design): provide basic components
+- TypeScript: Better development experience
+- Jest: test our components
 
 ## Get Started
 
-dev: `npm start` and open your browser : `localhost:3005`
+### dev
 
-build: `npm run build:rollup`
+`yarn start` and open your browser : `localhost:3005`
 
-## Docz configs
+### build
 
-mdx configs:
-
-```markdown
----
-name: Button
-route: /components/button
-menu: Components
----
-```
+`yarn build:rollup`
