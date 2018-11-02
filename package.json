@@ -5,12 +5,13 @@
   "main": "dist/index",
   "license": "MIT",
   "scripts": {
-    "dev:docz": "docz dev",
+    "build": "yarn build:rollup",
     "build:docz": "docz build",
     "build:rollup": "rollup -c scripts/rollup.config.js",
-    "start": "npm run dev:docz",
-    "test": "jest --config jest.config.js",
-    "shot": "ts-node scripts/shot"
+    "dev:docz": "docz dev",
+    "start": "yarn dev:docz",
+    "shot": "ts-node scripts/shot",
+    "test": "jest --config jest.config.js"
   },
   "repository": {
     "type": "git",

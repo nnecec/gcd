@@ -23,4 +23,8 @@ So, we import:
 
 ### build
 
-`yarn build:rollup`
+`yarn build`
+
+### test
+
+`yarn test`
