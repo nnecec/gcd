@@ -15,7 +15,8 @@ import generateItem from './render'
  * @class SearchBar
  * @extends {(React.Component<SearchBarProps & FormComponentProps, any>)}
  */
-class SearchBar extends React.Component<SearchBarProps & FormComponentProps, any> {
+@Form.create()
+export default class SearchBar extends React.Component<SearchBarProps & FormComponentProps, any> {
   public state: {
 
   }
@@ -74,5 +75,3 @@ class SearchBar extends React.Component<SearchBarProps & FormComponentProps, any
   }
 
 }
-
-export default Form.create()(SearchBar)
