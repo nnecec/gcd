@@ -25,10 +25,6 @@ export default {
   plugins: [
 
   ],
-  modifyBabelRc: babelrc => {
-    babelrc.babelrc = true
-    return babelrc
-  },
   themeConfig: {
     colors: {
       primary: '#0B1749',
