@@ -3,15 +3,14 @@
  */
 
 import * as fs from 'fs'
-import * as path from 'path'
 import * as inquirer from 'inquirer'
 
 import generateComponent from './generateComponent'
 import generateComponentTests from './generateComponentTests'
 
 (async () => {
-  const answers = await inquirer.prompt([{
-    type: 'rawlist',
+  const answers: any = await inquirer.prompt([{
+    type: 'list',
     name: 'shot',
     message: 'please choose one arrow to shot',
     choices: [

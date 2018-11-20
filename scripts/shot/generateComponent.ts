@@ -4,6 +4,7 @@
 
 import * as fs from 'fs'
 import * as inquirer from 'inquirer'
+import * as path from 'path'
 
 
 export default async function generateComponent() {
@@ -23,11 +24,11 @@ export default async function generateComponent() {
     }])
 
 
-  const type = answers.route.split(':')[0]
-  const route = `src/${type}`
-  const name = answers.name
+  const type: string = answers.route.split(':')[0]
+  const route: string = `../../src/${type}`
+  const name: string = answers.name
 
-  fs.mkdir(`${route}/${name}`, (err) => {
+  fs.mkdir(path.resolve(__dirname, `${route}/${name}`), (err) => {
     if (err) {
       console.log(err.message)
       return
@@ -49,12 +50,12 @@ export default async function generateComponent() {
       `\t\treturn (<div></div>)\n` +
       `\t}\n` +
       `}\n`
-    fs.writeFile(`${route}/${name}/index.tsx`, INDEX_TSX, (err) => { })
+    fs.writeFile(path.resolve(__dirname, `${route}/${name}/index.tsx`), INDEX_TSX, (err) => { })
 
     // interface
     const INTERFACE_TS = `export interface ${INDEX_PROPS} {\n\n` +
       `}\n`
-    fs.writeFile(`${route}/${name}/i${name}.ts`, INTERFACE_TS, (err) => { })
+    fs.writeFile(path.resolve(__dirname, `${route}/${name}/i${name}.ts`), INTERFACE_TS, (err) => { })
 
     // index.mdx
     const INDEX_MDX = `---\n` +
@@ -64,12 +65,12 @@ export default async function generateComponent() {
       `---\n\n` +
       `import { Playground, PropsTable } from 'docz'\n` +
       `import { ${name} } from 'hawkeye-arrow'\n`
-    fs.writeFile(`${route}/${name}/index.mdx`, INDEX_MDX, (err) => { })
+    fs.writeFile(path.resolve(__dirname, `${route}/${name}/index.mdx`), INDEX_MDX, (err) => { })
 
     // 添加到 type/index.ts 中
-    let INDEX_TS = fs.readFileSync(`${route}/index.ts`, "utf-8")
+    let INDEX_TS = fs.readFileSync(path.resolve(__dirname, `${route}/index.ts`), "utf-8")
     INDEX_TS += `export { default as ${name} } from './${name}'\n`
-    fs.writeFile(`${route}/index.ts`, INDEX_TS, (err) => { })
+    fs.writeFile(path.resolve(__dirname, `${route}/index.ts`), INDEX_TS, (err) => { })
   })
 
 }
