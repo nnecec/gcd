@@ -7,7 +7,7 @@ export interface SearchBarProps {
 
 export interface Field {
   /** 类型 */
-  type: string,
+  type?: string,
   /** key */
   key: string,
   /** label 名 */

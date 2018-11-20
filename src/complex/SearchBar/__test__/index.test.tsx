@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme'
 import SearchBar from '..'
 
 describe('SearchBar', () => {
-  test('could submit search', () => {
+  test('SearchBar: could submit search', () => {
     const onSearch = jest.fn()
     const wrapper = mount(
       <SearchBar

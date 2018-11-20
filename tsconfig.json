@@ -15,6 +15,10 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "lib": [
+      "dom",
+      "es7"
+    ]
   },
   "include": [
     "src/**/*"
