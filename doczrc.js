@@ -13,6 +13,16 @@ const modifyBundlerConfig = config => {
     test: /\.css$/,
     use: ["style-loader", "css-loader"]
   })
+  config.module.rules.push({
+    test: /\.less$/,
+    use: ["style-loader", "css-loader",
+      {
+        loader: "less-loader",
+        options: {
+          javascriptEnabled: true
+        }
+      }]
+  })
 
   return config
 }

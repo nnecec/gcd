@@ -14,6 +14,8 @@ import generateItem from './render'
  *
  * @class SearchBar
  * @extends {(React.Component<SearchBarProps & FormComponentProps, any>)}
+ * @author nnecec<nnecec@outlook.com>
+ * 
  */
 @Form.create()
 export default class SearchBar extends React.Component<SearchBarProps & FormComponentProps, any> {
