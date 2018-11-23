@@ -1,0 +1,44 @@
+@import './variables.less';
+@import '~antd/lib/button/style/index.less';
+
+.@{btn-prefix-cls} {
+  &-secondary{
+    .btn-secondary;
+  }
+}
+
+.button-variant-primary(@color; @background) {
+  .button-color(@color; @background; @background);
+  &:hover,
+  &:focus {
+    .button-color(@color; #FF8F1A; #FF8F1A);
+  }
+  &:active,
+  &.active {
+    .button-color(@color; #FF6F00; #FF6F00);
+  }
+  .button-disabled();
+}
+
+.button-variant-secondary(@color; @background; @border) {
+  .button-color(@color; @background; @border);
+  &:hover {
+    .button-color(@btn-primary-color; #FF8300; #FF8300);
+  }
+  &:focus {
+    .button-color(#FF8300; #fff; #FF8300);
+  }
+  &:active,
+  &.active {
+    .button-color(@btn-primary-color; #FF6F00; #FF6F00);
+  }
+  .button-disabled();
+}
+
+.btn-primary() {
+  .button-variant-primary(@btn-primary-color; @btn-primary-bg);
+}
+
+.btn-secondary() {
+  .button-variant-secondary(@btn-secondary-color, @btn-secondary-bg, @btn-secondary-color);
+}

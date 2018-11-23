@@ -4,6 +4,8 @@ Modify Ant.Design default variables
 And.Design default.less: https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
 */
 
+@ant-prefix: ant;
+
 // colors
 @primary-color: #FF8300;
 @success-color: #7DC33C;
@@ -15,6 +17,13 @@ And.Design default.less: https://github.com/ant-design/ant-design/blob/master/co
 
 // button
 @border-radius-base: 2px;
-@btn-height-base        : 32px;
-@btn-height-lg          : 40px;
-@btn-height-sm          : 28px;
+@btn-height-base: 32px;
+@btn-height-lg: 40px;
+@btn-height-sm: 28px;
+
+@btn-secondary-color: @primary-color;
+@btn-secondary-bg: #fff;
+@btn-secondary-border: @primary-color;
+@btn-disable-color: #B2B2B2;
+@btn-disable-bg: #F2F2F2;
+@btn-disable-border: #F2F2F2;
