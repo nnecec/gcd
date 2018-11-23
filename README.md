@@ -13,7 +13,8 @@ So, we import:
 - [docz](https://github.com/pedronauck/docz): generate documentation
 - [Ant.Design](https://github.com/ant-design/ant-design): provide basic components
 - TypeScript: Better development experience
-- Jest: test our components
+- Jest: test components
+- Rollup: build and export clean library
 
 ## Get Started
 
