@@ -18,7 +18,7 @@
     "url": "git://github.com/nnecec/arrow.git"
   },
   "dependencies": {
-    "antd": "^3.10.8",
+    "antd": "^3.10.9",
     "lodash": "^4.17.11",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -36,8 +36,8 @@
     "@types/react": "^16.7.7",
     "buble": "^0.19.6",
     "css-loader": "^1.0.1",
-    "docz": "^0.12.12",
-    "docz-core": "^0.12.12",
+    "docz": "^0.12.13",
+    "docz-core": "^0.12.13",
     "docz-plugin-css": "^0.11.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",

@@ -11,11 +11,11 @@
   .button-color(@color; @background; @background);
   &:hover,
   &:focus {
-    .button-color(@color; #FF8F1A; #FF8F1A);
+    .button-color(@color; @btn-focus-color; @btn-focus-color);
   }
   &:active,
   &.active {
-    .button-color(@color; #FF6F00; #FF6F00);
+    .button-color(@color; @btn-active-color; @btn-active-color);
   }
   .button-disabled();
 }
@@ -23,14 +23,14 @@
 .button-variant-secondary(@color; @background; @border) {
   .button-color(@color; @background; @border);
   &:hover {
-    .button-color(@btn-primary-color; #FF8300; #FF8300);
+    .button-color(@btn-primary-color; @primary-color; @primary-color);
   }
   &:focus {
-    .button-color(#FF8300; #fff; #FF8300);
+    .button-color(@primary-color; #fff; @primary-color);
   }
   &:active,
   &.active {
-    .button-color(@btn-primary-color; #FF6F00; #FF6F00);
+    .button-color(@btn-primary-color; @btn-active-color; @btn-active-color);
   }
   .button-disabled();
 }
