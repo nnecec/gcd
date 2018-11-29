@@ -64,7 +64,11 @@ export default async function generateComponent() {
       `menu: ${firstUpperCase(type)} Components\n` +
       `---\n\n` +
       `import { Playground, PropsTable } from 'docz'\n` +
-      `import { ${name} } from 'hawkeye-arrow'\n`
+      `import { ${name} } from 'hawkeye-arrow'\n\n` +
+      `# ${name}\n\n` +
+      `<Playground>\n\n` +
+      `</Playground>\n`
+
     fs.writeFile(path.resolve(__dirname, `${route}/${name}/index.mdx`), INDEX_MDX, (err) => { })
 
     // 添加到 type/index.ts 中
