@@ -4,7 +4,11 @@ To build components library and generate comprehensive documentation through a e
 
 ## Why?
 
-We inevitably encounter complex component requirements in business development.
+We inevitably encounter complex components requirements in business development.
+
+Then we made more complex components to solve problems.But the more components, the more you need clear documentation.
+
+We expect to import a mature base component library, like `Ant.Design`. Then based on the library to produce complex components, and with detailed instructions and demos.
 
 The purpose of this library is to write a complete documentation to the component with a minimum of extra work.
 
@@ -12,7 +16,7 @@ So, we import:
 
 - [docz](https://github.com/pedronauck/docz): generate documentation
 - [Ant.Design](https://github.com/ant-design/ant-design): provide basic components
-- TypeScript: Better development experience
+- TypeScript: better development experience
 - Jest: test components
 - Rollup: build and export clean library
 

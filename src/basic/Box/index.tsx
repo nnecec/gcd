@@ -1,9 +1,6 @@
 import * as React from 'react'
 
 import { BoxProps } from './iBox'
-import { BoxStyled } from './styled'
-
-
 
 export default class Box extends React.Component<BoxProps, any> {
 	public props: BoxProps
@@ -16,9 +13,9 @@ export default class Box extends React.Component<BoxProps, any> {
 
 	public render() {
 		return (
-			<BoxStyled>
+			<div>
 				{this.props.children}
-			</BoxStyled>
+			</div>
 		)
 	}
 }

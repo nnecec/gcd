@@ -40,7 +40,7 @@ const plugins = [
   less(),
   postcss({ extract: true }),
   buble({
-    transforms: { dangerousTaggedTemplateString: true } // fix styled-components error
+    // transforms: { dangerousTaggedTemplateString: true } // fix styled-components error
   }),
   uglify(),
 ]

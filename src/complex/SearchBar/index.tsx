@@ -3,7 +3,6 @@ import { Button, Form, message, Input, Row, Col } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 import { debounce } from 'lodash'
 
-import { SearchBarActionStyled } from './styled'
 import { SearchBarProps } from './iSearchBar'
 import generateItem from './render'
 
@@ -68,10 +67,10 @@ export default class SearchBar extends React.Component<SearchBarProps & FormComp
         {this.renderItems(fields)}
       </Row>
 
-      <SearchBarActionStyled>
+      <div>
         <Button onClick={this.handleReset} style={{ marginRight: 10 }}>重置</Button>
         <Button type="primary" icon="search" htmlType="submit">搜索</Button>
-      </SearchBarActionStyled>
+      </div>
 
     </Form>)
   }
