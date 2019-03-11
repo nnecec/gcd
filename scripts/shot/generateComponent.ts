@@ -28,53 +28,19 @@ export default async function generateComponent() {
   const type: string = answers.route.split(':')[0]
   const route: string = `../../src/${type}`
   const name: string = answers.name
+  const Name: string = firstUpperCase(name)
+  const isComplex = type !== 'complex'
 
-  fs.mkdir(path.resolve(__dirname, `${route}/${name}`), (err) => {
+  fs.mkdir(path.resolve(__dirname, `${route}/${Name}`), (err) => {
     if (err) {
       console.log(err.message)
       return
     }
-
-    // index.tsx
-    const INDEX_PROPS = `${name}Props`
-    const INDEX_TSX = `import * as React from 'react'\n` +
-      `import { Button } from 'antd'\n\n` +
-      `import { ${INDEX_PROPS} } from './i${name}'\n\n` +
-      `export default class ${name} extends React.Component<${INDEX_PROPS}, any> {\n` +
-      `\tpublic props: ${INDEX_PROPS}\n` +
-      `\tpublic state: {\n\n` +
-      `\t}\n` +
-      `\tconstructor(props) {\n` +
-      `\t\tsuper(props)\n` +
-      `\t}\n\n` +
-      `\tpublic render() {\n` +
-      `\t\treturn (<div></div>)\n` +
-      `\t}\n` +
-      `}\n`
-    fs.writeFile(path.resolve(__dirname, `${route}/${name}/index.tsx`), INDEX_TSX, (err) => { })
-
-    // interface
-    const INTERFACE_TS = `export interface ${INDEX_PROPS} {\n\n` +
-      `}\n`
-    fs.writeFile(path.resolve(__dirname, `${route}/${name}/i${name}.ts`), INTERFACE_TS, (err) => { })
-
-    // index.mdx
-    const INDEX_MDX = `---\n` +
-      `name: ${name}\n` +
-      `route: /components/type/${name.toLowerCase()}\n` +
-      `menu: ${firstUpperCase(type)} Components\n` +
-      `---\n\n` +
-      `import { Playground, PropsTable } from 'docz'\n` +
-      `import { ${name} } from 'hawkeye-arrow'\n\n` +
-      `# ${name}\n\n` +
-      `<Playground>\n\n` +
-      `</Playground>\n`
-
-    fs.writeFile(path.resolve(__dirname, `${route}/${name}/index.mdx`), INDEX_MDX, (err) => { })
+    readAndWriteFile(route, name, isComplex)
 
     // 添加到 type/index.ts 中
     let INDEX_TS = fs.readFileSync(path.resolve(__dirname, `${route}/index.ts`), "utf-8")
-    INDEX_TS += `export { default as ${name} } from './${name}'\n`
+    INDEX_TS += `export { default as ${Name} } from './${Name}'\n`
     fs.writeFile(path.resolve(__dirname, `${route}/index.ts`), INDEX_TS, (err) => { })
   })
 
@@ -82,4 +48,29 @@ export default async function generateComponent() {
 
 function firstUpperCase(str) {
   return str.replace(/^\S/, (s) => s.toUpperCase())
+}
+
+/**
+ *
+ *
+ * @param {string} target 目标生成路径 
+ * @param {string} name 目标名称
+ * @param {boolean} isComplex 是否是复杂组件
+ */
+function readAndWriteFile(target: string, name: string, isComplex: boolean): void {
+  const template = './template/complex'
+  const files = ['index.tsx', 'index.mdx', 'interface.ts', 'index.less']
+
+  const Name = firstUpperCase(name)
+
+  // index
+  for (const file of files) {
+    fs.readFile(path.resolve(__dirname, `${template}/${file}`), 'utf8', (err, content) => {
+      content = content.replace(/COMPONENT_NAME_PROPS/g, `${Name}Props`)
+        .replace(/COMPONENT_NAME/g, file.includes('.mdx') ? name : Name)
+
+
+      fs.writeFile(path.resolve(__dirname, `${target}/${name}/${file}`), content, (err) => { })
+    })
+  }
 }
