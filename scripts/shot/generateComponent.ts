@@ -3,8 +3,9 @@
  */
 
 import * as fs from 'fs'
-import * as inquirer from 'inquirer'
 import * as path from 'path'
+
+import * as inquirer from 'inquirer'
 
 
 export default async function generateComponent() {
