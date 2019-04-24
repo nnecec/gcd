@@ -1,24 +1,17 @@
-# 🏹️ Hawkeye Arrow️
+# GCD
 
-To build components library and generate comprehensive documentation through a easy way.
+Generate Components Documents.
 
 ## Why?
 
-We inevitably encounter complex components requirements in business development.
+To build components library and generate comprehensive documentation through a easy way.
 
-Then we made more complex components to solve problems.But the more components, the more you need clear documentation.
-
-We expect to import a mature base component library, like `Ant.Design`. Then based on the library to produce complex components, and with detailed instructions and demos.
-
-The purpose of this library is to write a complete documentation to the component with a minimum of extra work.
-
-So, we import:
+We use these tools:
 
 - [docz](https://github.com/pedronauck/docz): generate documentation
-- [Ant.Design](https://github.com/ant-design/ant-design): provide basic components
-- TypeScript: better development experience
-- Jest: test components
-- Rollup: build and export clean library
+- TypeScript: Better development experience
+- Jest: Test components
+- Rollup: Build and export clean library
 
 ## Get Started
 
