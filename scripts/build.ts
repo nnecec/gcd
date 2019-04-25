@@ -8,6 +8,7 @@ import clean from './clean';
   await clean()
   await execa('yarn', ['build:commonjs'], { stdout: 'inherit' })
   await execa('yarn', ['build:es'], { stdout: 'inherit' })
+  await execa('yarn', ['build:es.css'], { stdout: 'inherit' })
 
   console.log('build end')
 })().catch(err => {

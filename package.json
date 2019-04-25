@@ -7,7 +7,7 @@
     "build": "ts-node scripts/build.ts",
     "build:docz": "docz build",
     "build:commonjs": "rollup -c configs/rollup.config.js",
-    "build:es": "rm -rf es && tsc -p configs/tsconfig.es.json",
+    "build:es": "tsc -p configs/tsconfig.es.json",
     "build:es.css": "gulp --gulpfile scripts/build.css.js",
     "dev:docz": "docz dev",
     "start": "yarn dev:docz",

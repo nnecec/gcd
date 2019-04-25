@@ -22,7 +22,3 @@ We use these tools:
 ### build
 
 `yarn build`
-
-### test
-
-`yarn test`
