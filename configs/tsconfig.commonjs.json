@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "../dist",
+    "rootDir": "../src",
+    "jsx": "preserve",
+    "sourceMap": false,
+    "declaration": false,
+    "module": "ES2015"
+  },
+  "exclude": [
+    "../node_modules",
+    "../src/**/index.ts",
+    "../src/index.ts"
+  ],
+  "include": [
+    "../src/**/*"
+  ],
+}

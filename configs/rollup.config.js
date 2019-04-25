@@ -7,6 +7,7 @@ import { uglify } from 'rollup-plugin-uglify'
 import less from 'rollup-plugin-less'
 import postcss from 'rollup-plugin-postcss'
 import buble from 'rollup-plugin-buble'
+import path from 'path'
 
 const plugins = [
   replace({
@@ -14,14 +15,13 @@ const plugins = [
   }),
   resolve({
     preferBuiltins: true,
-    jsnext: true,
-    main: true,
     browser: true
   }),
 
   rollupTypescript({
     typescript,
-    abortOnError: false
+    abortOnError: false,
+    tsconfig: path.resolve(__dirname, './tsconfig.commonjs.json')
   }),
   commonjs({
     include: 'node_modules/**',
@@ -42,23 +42,31 @@ const plugins = [
   buble({
     // transforms: { dangerousTaggedTemplateString: true } // fix styled-components error
   }),
-  uglify(),
+  // uglify(),
 ]
 
 const dependencies = Object.keys(require('../package.json').dependencies)
 
 export default {
   input: 'src/index.ts',
-  output: {
+  output: [{
     file: 'dist/index.js',
-    format: 'umd',
-    name: 'arrow',
+    format: 'commonjs',
+    name: 'gcd',
     sourceMap: false,
     globals: {
       react: 'React',
       antd: 'antd'
     },
-  },
+  }, {
+    file: 'dist/index.esm.js',
+    format: 'esm',
+    name: 'gcd',
+    sourceMap: false,
+    globals: {
+      react: 'React'
+    },
+  },],
   plugins,
 
   external: dependencies,
