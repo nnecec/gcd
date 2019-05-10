@@ -6,7 +6,7 @@ import clean from './clean';
   console.log('build start')
 
   await clean()
-  await execa('yarn', ['build:commonjs'], { stdout: 'inherit' })
+  await execa('yarn', ['build:umd'], { stdout: 'inherit' })
   await execa('yarn', ['build:es'], { stdout: 'inherit' })
   await execa('yarn', ['build:es.css'], { stdout: 'inherit' })
 

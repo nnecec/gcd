@@ -8,7 +8,7 @@ To build components library and generate comprehensive documentation through a e
 
 We use these tools:
 
-- [docz](https://github.com/pedronauck/docz): generate documentation
+- [docz](https://github.com/pedronauck/docz): Components documentation website
 - TypeScript: Better development experience
 - Jest: Test components
 - Rollup: Build and export clean library

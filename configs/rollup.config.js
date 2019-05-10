@@ -51,16 +51,23 @@ export default {
   input: 'src/index.ts',
   output: [{
     file: 'dist/index.js',
-    format: 'commonjs',
+    format: 'cjs',
     name: 'gcd',
     sourceMap: false,
     globals: {
       react: 'React',
-      antd: 'antd'
     },
   }, {
     file: 'dist/index.esm.js',
-    format: 'esm',
+    format: 'es',
+    name: 'gcd',
+    sourceMap: false,
+    globals: {
+      react: 'React'
+    },
+  }, {
+    file: 'dist/index.umd.js',
+    format: 'umd',
     name: 'gcd',
     sourceMap: false,
     globals: {
